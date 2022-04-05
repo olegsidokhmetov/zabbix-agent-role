@@ -1,0 +1,22 @@
+---
+
+- name: Allow port 22 SSH
+  community.general.ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Enabled UFW
+  community.general.ufw:
+    state: enabled
+
+- name: Allow port 10050/tcp
+  community.general.ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+    comment: "{{ item.comment }}"
+  with_items: "{{ ufw_10050 }}"
+
+- name: reloaded UFW
+  community.general.ufw:
+    state: reloaded

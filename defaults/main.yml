@@ -1,0 +1,8 @@
+---
+# defaults file for zabbix-agent
+
+dir_download: /home/
+path_agentd_conf: /etc/zabbix/zabbix_agentd.conf
+url_zabbix: https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-1+ubuntu20.04_all.deb
+deb_zabbix: zabbix-release_6.0-1+ubuntu20.04_all.deb
+ip_zabbix_server: 95.217.188.202

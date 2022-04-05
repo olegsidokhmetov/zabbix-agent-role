@@ -1,0 +1,11 @@
+---
+
+- name: Ansible multiple replace data in file {{ path_agentd_conf }}
+  replace:
+    path: "{{ item.path }}"
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  with_items:
+    - {path: "{{ path_agentd_conf }}", regexp: "Server=127.0.0.1", replace: "Server={{ ip_zabbix_server }}"}
+    - {path: "{{ path_agentd_conf }}", regexp: "ServerActive=127.0.0.1", replace: "ServerActive={{ ip_zabbix_server }}"}
+    - {path: "{{ path_agentd_conf }}", regexp: "Hostname=Zabbix server", replace: "Hostname={{ ansible_hostname }}"}

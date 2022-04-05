@@ -1,0 +1,11 @@
+---
+# vars file for zabbix-agent
+
+#ufw
+ufw_10050:
+ - rule: allow
+   port: 10050
+   proto: tcp
+   comment: port for zabbix agent
+   state_on: enabled
+   state_reload: reloaded

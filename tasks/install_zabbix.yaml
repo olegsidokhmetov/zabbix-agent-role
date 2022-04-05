@@ -1,0 +1,25 @@
+---
+
+- name: Download zabbix
+  get_url:
+    url: "{{ url_zabbix }}"
+    dest: "{{ dir_download }}"
+
+- name: Install zabbix
+  apt: deb="{{ dir_download }}{{ deb_zabbix }}"
+
+- name: Update apt cache and Upgrade all apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Install zabbix-agent
+  apt:
+    name: zabbix-agent
+    update_cache: true
+    state: latest
+
+- name: Remove file {{ deb_zabbix }}
+  ansible.builtin.file:
+    path: "{{ dir_download }}{{ deb_zabbix }}"
+    state: absent

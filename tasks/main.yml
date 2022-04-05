@@ -1,0 +1,15 @@
+---
+# tasks file for zabbix-agent
+
+- name: Install zabbix
+  import_tasks: install_zabbix.yaml
+
+- name: Ansible multiple replace data in file {{ path_agentd_conf }}
+  import_tasks: add_config_zabbix_agentd.conf.yaml
+
+- name: Add rules UFW
+  import_tasks: ufw_rules.yaml
+
+- name: Restart and enable zabbix agent
+  import_tasks: restart_enable_zabbix.yaml
+  
